@@ -1,0 +1,108 @@
+Para realizar la cola de prioridades que maneje  la gestion los combates en un torneo, hemos decidido implementar una Heap Binaria utilizando la Bibloteca "heapq" en Python, que internamente maneja un min-heap invertido.
+
+Python no incluye una implementación directa de un max-heap en su biblioteca estándar, por ello, al inve
+
+
+¿Por que hemos decidido utilizar esta libreria y no implementar una Max-heap manualmente?
+
+Eficiencia y Optimización:
+Optimizacion de heapq: La implementación de heapq está escrita en C y es parte de la biblioteca estándar de Python, lo que significa que está muy bien optimizada en términos de rendimiento.
+Operaciones en 𝑂(log 𝑛): Las operaciones de inserción (heappush) y extracción del mínimo (heappop) están implementadas de manera eficiente con una complejidad de tiempo de 𝑂(log 𝑛) , lo cual es ideal para manejar grandes cantidades de datos.
+Eficiencia de los metodos:
+heapq.heappush: O(log n).
+heapq.heappop: O(log n).
+Verificar si está vacía: O(1).
+
+Simplicidad de Uso:
+Mucho menos código: Usar heapq te ahorra tener que escribir y depurar el código de un heap binario implementado desde cero. La librería te proporciona funciones que hacen todo el trabajo de forma sencilla, como heappush, heappop, heapify, etc.
+
+Mantenimiento y Robustez:
+Código confiable: La implementación de heapq ha sido ampliamente probada y es parte de la biblioteca estándar de Python. Esto significa que tiene menos probabilidades de tener errores en comparación con una implementación manual.
+Compatibilidad futura: Si Python hace mejoras en el código de heapq en futuras versiones, automaticamente las recibimos en nuestro codigo.
+
+A modo de instacia de aprendizaje, hemos indagado en la estructura de una max-heap, para conocer su implementacion manual desde cero, para cuando tengamos que leer codigo en otro lenguaje que no posea este nivel de abstraccion con las librerias.
+
+class MaxHeap:
+    def __init__(self):
+        self.heap = []
+
+    def __len__(self):
+        return len(self.heap)
+
+    def padre(self, i):
+        return (i - 1) // 2
+
+    def hijo_izquierdo(self, i):
+        return 2 * i + 1
+
+    def hijo_derecho(self, i):
+        return 2 * i + 2
+
+    def insertar(self, valor):
+        #Agrega un valor al heap y restaura la propiedad de max-heap.
+        self.heap.append(valor)  # Agregar al final
+        self.heapify_up(len(self.heap) - 1)  # Reubicar hacia arriba
+
+    def extraer_maximo(self):
+        #Extrae y devuelve el máximo del heap.
+        if not self.heap:
+            return None  # El heap está vacío
+        
+        maximo = self.heap[0]  # El máximo es la raíz
+        ultimo = self.heap.pop()  # Elimina el último elemento
+
+        if self.heap:  # Si no está vacío después de la extracción
+            self.heap[0] = ultimo  # Mueve el último elemento a la raíz
+            self.heapify_down(0)  # Reubica hacia abajo
+
+        return maximo
+
+    def heapify_up(self, i):
+        #Reubica el elemento hacia arriba para mantener la propiedad de max-heap.
+        while i > 0:
+            padre = self.padre(i)
+            if self.heap[i] > self.heap[padre]:  # Si el hijo es mayor que el padre
+                self.heap[i], self.heap[padre] = self.heap[padre], self.heap[i]  # Intercambia
+                i = padre  # Continua desde el nuevo índice
+            else:
+                break
+
+    def heapify_down(self, i):
+        #Reubica el elemento hacia abajo para mantener la propiedad de max-heap.
+        while True:
+            izq = self.hijo_izquierdo(i)
+            der = self.hijo_derecho(i)
+            mayor = i
+
+            # Compara con el hijo izquierdo
+            if izq < len(self.heap) and self.heap[izq] > self.heap[mayor]:
+                mayor = izq
+
+            # Compara con el hijo derecho
+            if der < len(self.heap) and self.heap[der] > self.heap[mayor]:
+                mayor = der
+
+            if mayor == i:  # Si no hay cambios, terminamos
+                break
+
+            # Intercambia con el hijo mayor
+            self.heap[i], self.heap[mayor] = self.heap[mayor], self.heap[i]
+            i = mayor  # Continua desde el nuevo índice
+
+    def mostrar_heap(self):
+        #Muestra el heap actual (para depuración).
+        print(self.heap)
+
+
+
+
+
+
+
+
+Paginas o fuentes consultadas: 
+Oficial:
+https://docs.python.org/es/3.13/library/heapq.html
+
+informal:
+https://stackoverflow.com/questions/12356564/looking-for-an-inverted-heap-in-python
