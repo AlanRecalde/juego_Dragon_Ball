@@ -1,0 +1,17 @@
+Documentación del arbol general 
+
+Este código implementa un sistema de habilidades basado en un árbol jerárquico, ideal para representar las técnicas avanzadas del universo Dragon Ball. La estructura permite organizar habilidades como el Kamehameha y sus evoluciones en niveles, cada una con requisitos específicos de energía y nivel. Utilizando una estructura de árbol, cada habilidad principal puede tener subhabilidades derivadas que forman ramas, permitiendo al jugador visualizar y gestionar las progresiones de poder.
+
+El algoritmo utiliza dos clases: NodoHabilidad y ArbolHabilidades. La clase NodoHabilidad representa cada habilidad específica, almacenando atributos como su nombre, el costo de energía para ejecutarla y el nivel mínimo requerido. Además, cada nodo tiene una lista de hijos que contiene las habilidades derivadas. El método agregar_habilidad permite añadir nuevas subhabilidades, facilitando la expansión del árbol a medida que el personaje avanza en nivel o gana experiencia.
+
+Por su parte, la clase ArbolHabilidades se encarga de gestionar la estructura completa. El constructor inicializa el árbol con una habilidad raíz, como Kamehameha. El método agregar_habilidad busca el nodo correspondiente al nombre del padre y agrega la nueva habilidad como hijo. La búsqueda se realiza mediante el método recursivo buscar_habilidad, que recorre los nodos del árbol hasta encontrar el objetivo. Asimismo, mostrar_arbol recorre el árbol en profundidad y presenta la jerarquía en un formato visual claro, con indentaciones que indican el nivel de cada habilidad en la estructura.
+
+En este ejemplo, la habilidad raíz es Kamehameha, que requiere un costo de energía de 50 y nivel 5. A partir de ella se derivan habilidades como Kamehameha x10 (nivel 10 y costo 100) y Kamehameha Explosivo (nivel 15 y costo 120). La habilidad Kamehameha x20 es una subhabilidad de Kamehameha x10, mostrando cómo se pueden encadenar progresiones avanzadas. La salida del programa incluye la impresión jerárquica del árbol y la búsqueda de una habilidad específica para mostrar cómo estas técnicas pueden gestionarse dinámicamente.
+
+Este enfoque permite una organización eficiente de habilidades, ideal para juegos de rol donde las técnicas se desbloquean y evolucionan a medida que los personajes avanzan. La combinación de recursividad y estructuras jerárquicas proporciona un modelo flexible para expandir las habilidades, haciendo del árbol de habilidades una herramienta robusta para sistemas de progresión complejos.
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+Análisis de Algoritmos: Eficiencia en Árboles Binarios (Unidad 3)
+
+Descripción General del Código
+
+El código implementa un árbol binario de búsqueda (BST) para organizar personajes según su nivel de poder. Cada nodo del árbol es una instancia de la clase Personaje, que contiene atributos como nombre, poder y referencias a sus subárboles izquierdo y derecho. La clase Personajes maneja las operaciones principales: insertar nuevos personajes, mostrar los personajes en orden de poder y buscar un personaje por su nivel de poder.
+
+Análisis de Complejidad:
+Método insertar
+
+Complejidad Temporal: O(h), donde h es la altura del árbol
+En el peor de los casos, el algoritmo debe recorrer la altura completa del árbol para encontrar la posición correcta para insertar un nuevo nodo. En un árbol balanceado, h es O(log n), siendo n el número de nodos. Sin embargo, en un árbol desbalanceado (como un árbol degenerado o una lista enlazada), la complejidad se degrada a O(n).
+Complejidad Espacial: O(1)
+La inserción solo utiliza memoria adicional para la variable nuevo_personaje y referencias temporales.
+Método mostrar_mas_fuertes (Recorrido Inorden Inverso)
+
+Complejidad Temporal: O(n), donde n es el número de nodos en el árbol
+Este método recorre todos los nodos en orden descendente, visitando cada nodo exactamente una vez.
+Complejidad Espacial: O(h) debido a la recursividad
+La profundidad máxima de la pila de llamadas es proporcional a la altura del árbol, lo que puede ser O(log n) para árboles balanceados y O(n) para árboles desbalanceados.
+Método Buscar_personaje
+
+Complejidad Temporal: O(h), donde h es la altura del árbol
+El método busca iterativamente el nodo con el nivel de poder especificado, siguiendo el principio del árbol binario de búsqueda. La complejidad depende de la altura del árbol.
+Complejidad Espacial: O(1)
+El método utiliza una cantidad constante de memoria adicional para manejar la referencia actual.
+Discusión de Eficiencia:
+Ventajas del Árbol Binario:
+Utilizar un árbol binario permite organizar eficientemente los personajes en función de su nivel de poder. Las operaciones de búsqueda, inserción y recorrido tienen una eficiencia aceptable, especialmente cuando el árbol está balanceado.
+Riesgo de Desbalanceo:
+Si los niveles de poder se insertan en orden ascendente o descendente, el árbol puede desbalancearse, convirtiéndose en una estructura lineal (lista enlazada) con una complejidad de O(n) para operaciones de búsqueda e inserción. Una posible mejora sería implementar un árbol auto-balanceado como un AVL o un Red-Black Tree.
+Recorrido Inorden Inverso:
+La elección del recorrido inorden inverso permite listar los personajes del más fuerte al más débil, lo cual es útil para la mecánica del juego. Este recorrido tiene un costo lineal respecto al número de nodos, lo cual es óptimo para esta tarea.
+Conclusión
+El uso de un árbol binario de búsqueda para organizar personajes por nivel de poder es una solución eficiente para conjuntos de datos moderadamente grandes, especialmente si el árbol permanece relativamente balanceado. Sin embargo, para aplicaciones donde se espera un gran volumen de datos, sería beneficioso considerar mejoras en la estructura para garantizar el equilibrio del árbol.

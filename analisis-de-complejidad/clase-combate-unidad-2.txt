@@ -1,0 +1,45 @@
+Análisis de Algoritmos: Estructuras Recursivas (Unidad 2)
+
+
+La clase Combate implementa la lógica de un combate por turnos entre dos personajes, gestionando acciones como golpes, uso de habilidades y transformaciones. La clase incorpora un sistema de turnos alternos y el combate se desarrolla hasta que uno de los personajes pierde todos sus puntos de vida. También se destaca la función iniciar_combate, que utiliza recursividad para gestionar múltiples combates consecutivos. La lógica de evolución de poder tras una victoria o derrota añade una dimensión estratégica al juego.
+
+Análisis de Complejidad:
+
+Método turno
+
+Complejidad Temporal: O(1) por llamada
+Cada turno realiza una serie de operaciones que son independientes del tamaño de las entradas. La selección de habilidades, transformación o defensa son decisiones rápidas y directas.
+Complejidad Espacial: O(1)
+No requiere almacenamiento adicional más allá de las variables locales utilizadas para gestionar el turno.
+
+
+Método iniciar_combate
+
+Complejidad Temporal: O(n), donde n es el número de turnos que dura el combate
+Este método ejecuta múltiples llamadas al método turno hasta que uno de los personajes pierde toda su vida. La cantidad de turnos depende de los valores iniciales de vida y daño infligido en cada turno. La recursividad se observa en la gestión de combates consecutivos, y cada llamada adicional a iniciar_combate decrece en función del parámetro combates.
+Complejidad Espacial: O(n) debido a la recursividad
+Cada llamada recursiva agrega un nuevo marco a la pila de llamadas, lo que lleva a un uso lineal de memoria en función del número de combates.
+
+
+Método transformaciones
+
+Complejidad Temporal: O(t), donde t es el número de transformaciones disponibles
+Se recorre la lista de transformaciones para mostrar las opciones disponibles, lo cual depende directamente del tamaño de la lista.
+Complejidad Espacial: O(1)
+No se utilizan estructuras adicionales más allá de las variables locales.
+
+Sistema Recursivo en iniciar_combate
+La recursividad en iniciar_combate es una implementación directa para gestionar múltiples combates de manera consecutiva. Cada nivel de recursión representa un nuevo combate, con una reducción del parámetro combates en cada llamada.
+
+Eficiencia Temporal: O(m * n), donde m es el número de combates y n es el número de turnos por combate
+Eficiencia Espacial: O(m) debido a la pila de llamadas recursivas
+Discusión General
+El uso de recursividad en iniciar_combate es adecuado para representar combates secuenciales, aunque en escenarios con un gran número de combates, podría ser más eficiente manejar esto iterativamente para evitar desbordes en la pila de llamadas. Los métodos individuales están bien optimizados, y las operaciones principales como los turnos y transformaciones se ejecutan en tiempo constante o lineal.
+
+En resumen, la clase Combate está diseñada para un juego con dinámicas por turnos, y la estructura recursiva le aporta claridad a la lógica de combates múltiples, aunque podría mejorarse para escenarios más extensos mediante una implementación iterativa.
+
+
+
+
+
+

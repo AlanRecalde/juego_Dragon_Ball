@@ -1,0 +1,67 @@
+Análisis de Algoritmos: de Clases e Interfaces (Unidad 1)
+
+El código presentado implementa una clase Personaje que modela un personaje del universo de Dragon Ball, con atributos y métodos enfocados en la gestión de su nivel de poder, habilidades y estado vital durante las batallas. La clase hereda de las interfaces INivel e IHabilidades, lo que permite sobrescribir métodos clave relacionados con la evolución de nivel y la adquisición de habilidades. Además, se incorporan estructuras de datos como set para almacenar habilidades y constantes para definir límites máximos en nivel, vida y poder.
+
+Análisis de Complejidad:
+
+Método recibir_dano
+
+Complejidad Temporal: O(1)
+La operación de decremento de la vida del personaje es constante, ya que solo realiza una resta básica.
+Complejidad Espacial: O(1)
+No requiere almacenamiento adicional, ya que solo modifica el atributo vida.
+
+Método esta_vivo y esta_muerto
+
+Complejidad Temporal: O(1)
+Ambas funciones realizan evaluaciones simples (self.vida > 0 y not self.esta_vivo()), por lo que la complejidad es constante.
+Complejidad Espacial: O(1)
+No hay uso adicional de memoria, solo se evalúan condiciones.
+
+
+Método mostrar_vida
+
+Complejidad Temporal: O(1)
+Imprime la vida actual del personaje, lo cual es una operación constante.
+Complejidad Espacial: O(1)
+No utiliza almacenamiento adicional.
+
+
+Método reiniciar_vida
+
+Complejidad Temporal: O(1)
+Restablece la vida del personaje al valor máximo definido, lo que es una operación constante.
+Complejidad Espacial: O(1)
+No requiere memoria adicional.
+
+Método calcular_dano
+
+Complejidad Temporal: O(1)
+La operación de búsqueda en el diccionario base_dano es O(1), y la multiplicación con nivel_de_poder también es constante.
+Complejidad Espacial: O(1)
+No se crean estructuras adicionales; solo se utiliza una variable local para almacenar el daño.
+
+
+Método agregar_habilidad
+
+Complejidad Temporal: O(1) en promedio
+Los conjuntos (set) en Python tienen una complejidad promedio de O(1) para agregar elementos y verificar su existencia.
+Complejidad Espacial: O(n)
+La memoria utilizada es proporcional a la cantidad de habilidades únicas almacenadas en el conjunto habilidades.
+
+
+Método subir_nivel
+
+Complejidad Temporal: O(1)
+La comparación y la suma son operaciones constantes.
+Complejidad Espacial: O(1)
+No se utiliza memoria adicional más allá de la actualización del atributo nivel_de_poder.
+
+
+Conclusiones Generales
+
+El diseño del algoritmo es eficiente para las operaciones básicas necesarias en un juego de combate. Las operaciones críticas como recibir daño, verificar estado vital y calcular daño se ejecutan en tiempo constante, lo cual es crucial para mantener el rendimiento en tiempo real. Además, el uso de un conjunto (set) para almacenar habilidades es una elección inteligente, ya que garantiza que no haya duplicados y permite una gestión rápida de las habilidades aprendidas.
+
+El código está bien optimizado en términos de espacio, ya que las estructuras utilizadas (conjuntos y diccionarios) almacenan solo los datos necesarios. Sin embargo, si el juego escala significativamente en términos de personajes o habilidades, se podría analizar la eficiencia del espacio ocupado por el conjunto de habilidades.
+
+En conclusión, el código ofrece un equilibrio eficiente entre simplicidad y velocidad, asegurando que las batallas y la gestión de personajes se manejen con una complejidad constante en la mayoría de los casos, lo cual es ideal para juegos con dinámicas rápidas.

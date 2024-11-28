@@ -1,10 +1,3 @@
-
-
-class personaje():
-    def __init__(self,personaje,nivel):
-        self.nombre=personaje
-        self.nivel=nivel
-
 class MaxHeap:
     def __init__(self):
         self.heap=[]
@@ -122,5 +115,3 @@ if campeon is not None and type(campeon) is not str:
     print("el ganador del torneo es {}".format(campeon.nombre))
 else:
     print (campeon)
-
-        

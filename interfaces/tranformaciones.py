@@ -1,15 +1,4 @@
-class Personaje():
-    def __init__(self,personaje,raza,nivel):
-        self.personaje=personaje
-        self.raza=raza
-        self.nivel=nivel
-        self.habilidades=[]
-        self.transformaciones=[("super",1.5),("kaioken",2.5)]
-
-
-
-
-    def transformaciones_(self):
+def transformaciones_(self):
         
         nivel=self.nivel
         if not self.transformaciones:
@@ -39,17 +28,3 @@ class Personaje():
         
         else:
             return f"nivel de poder final= {nivel}"
-
-
-
-
-poder=Personaje("goku","sayayin",200)
-final=poder.transformaciones_()
-print(final)
-
-
-
-
-
-
-

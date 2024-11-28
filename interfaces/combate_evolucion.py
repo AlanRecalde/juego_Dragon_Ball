@@ -93,7 +93,3 @@ def transformaciones(self,atacante):
      else:
           return "no quedan transformaciones", self.turno()
     
-                     
-
-
-    

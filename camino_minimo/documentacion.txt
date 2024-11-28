@@ -1,0 +1,38 @@
+Documentación del Algoritmo: Dijkstra con Heap Manual
+
+
+
+Este código implementa el algoritmo de Dijkstra utilizando una MinHeap manual para encontrar el camino más corto en un mapa que representa el universo de Dragon Ball. El objetivo es calcular la ruta más rápida para recolectar las Esferas del Dragón desde un punto inicial, en este caso, "Tierra".
+
+Descripción General del Algoritmo
+El algoritmo de Dijkstra se utiliza para encontrar la distancia más corta desde un nodo inicial hacia todos los demás nodos en un grafo ponderado. En este caso, los nodos representan planetas o ubicaciones del universo (Tierra, Namek, Vegeta, etc.) y las aristas representan el tiempo o costo para viajar entre ellas.
+
+Inicialización:
+
+Se establece un diccionario distancias donde todos los nodos tienen inicialmente una distancia infinita (float('inf')), excepto el nodo de inicio, que tiene una distancia de 0.
+Se utiliza un diccionario caminos para rastrear el nodo previo en el camino más corto hacia cada destino.
+Se crea una instancia de MinHeap para manejar la prioridad de los nodos según sus distancias actuales.
+
+
+Heap Manual (MinHeap):
+
+La clase MinHeap implementa un heap binario que mantiene el nodo con la menor distancia en la raíz.
+El método push agrega un nuevo nodo y garantiza la estructura del heap usando _sift_up.
+El método pop elimina el nodo con la menor prioridad (distancia) y reestructura el heap con _sift_down.
+is_empty verifica si el heap está vacío.
+
+Bucle Principal:
+
+Mientras el heap no esté vacío, se extrae el nodo con la menor distancia.
+Si se encuentra una mejor ruta hacia un vecino, se actualiza la distancia y se inserta el vecino en el heap.
+
+Actualización de Caminos:
+
+Si el nuevo costo de viaje es menor que el registrado, se actualiza la distancia y el nodo previo en el camino más corto.
+Ejemplo Aplicado al Juego: Mapa del Universo
+El grafo mapa representa las rutas entre diferentes planetas del universo de Dragon Ball:
+
+Tierra está conectada con Namek y Vegeta.
+Vegeta conecta con Freezer, mientras que Namek se conecta con Kaiosama.
+El objetivo es encontrar la ruta más corta desde Tierra hacia los demás planetas.
+
